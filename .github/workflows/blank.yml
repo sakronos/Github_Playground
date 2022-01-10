@@ -35,8 +35,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Git Release
-  # You may pin to the exact commit or the version.
-  # uses: anton-yurchenko/git-release@27c62158a8fcb73ce28f2d9882a4b011efea77c4
-        uses: anton-yurchenko/git-release@v4.1.2
+      - name: Release
+        uses: docker://antonyurchenko/git-release:latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: build/*.zip
         
